@@ -1,5 +1,6 @@
-//PHP learned from http://www.w3schools.com/PHP/
-
+PHP learned from http://www.w3schools.com/PHP/
+<br />
+<br />
 
 <?php
 
@@ -222,3 +223,9 @@ else{
 }  
 
 ?>
+
+<br />
+<br />
+<br />
+<br />
+Please click your browser's "Back" button to proceed
