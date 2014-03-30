@@ -1,4 +1,3 @@
-PHP learned from http://www.w3schools.com/PHP/
 <br />
 <br />
 
