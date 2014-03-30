@@ -5,5 +5,7 @@
 	  echo "<br />Failed to connect to MySQL: " . mysqli_connect_error();
 	}
 
-	
+	mysqli_query($con,"DELETE FROM Borrower WHERE bid=($_POST['borrower_id'])");
+
+	mysqli_close($con);
 ?>

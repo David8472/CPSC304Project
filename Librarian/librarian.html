@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>CPSC304 - Librarian</title>
+</head>
+
+<body>
+
+<div id="header" style="background-color:#FFA500;">
+<h1>Librarian</h1></div>
+
+<b>Remove borrower from library</b><form name="removeborrower" method="post">
+Borrower ID: <input type="number" name="bid" value="<?php echo $bid;?>">
+<input type="submit" name="remove_borrower" value="Remove" >
+</form>
+<br>
+<br>
+<b>Add new item to library</b><form name="additem" method="post">
+Call number: <input type="number" name="bid" value="<?php echo $callnumber;?>">
+Title: <input type="text" name="title" value="<?php echo $title;?>">
+<br>
+Year: <input type="number" name="year" value="<?php echo $year;?>">
+Publisher: <input type="text" name="publisher" value="<?php echo $publisher;?>">
+<br>
+Category: <input type="text" name="category" value="<?php echo $category;?>">
+Branch: <input type="title" name="branch" value="<?php echo $branch;?>">
+<br>
+<input type="submit" name="add_item" value="Add item" >
+</form>
+
+
+</body>
+</html>

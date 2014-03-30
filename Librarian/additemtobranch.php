@@ -5,5 +5,5 @@
 	  echo "<br />Failed to connect to MySQL: " . mysqli_connect_error();
 	}
 
-	
+	mysqli_query($con,"INSERT INTO Items
 ?>
