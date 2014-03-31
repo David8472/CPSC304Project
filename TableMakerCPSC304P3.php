@@ -222,23 +222,6 @@ else{
   echo "<br />Error creating table: " . mysqli_error($con);
 } 
 
-// item
-$sql = "CREATE TABLE Item
-(
-callNumber INT NOT NULL
-title CHAR(50)
-year INT
-publisher CHAR(50)
-category CHAR(20)
-)";
-// Execute query
-if (mysqli_query($con,$sql)){
-  echo "<br />Item table created successfully";
-}
-else{
-  echo "<br />Error creating table: " . mysqli_error($con);
-}
-
 
 ?>
 

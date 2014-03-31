@@ -225,12 +225,77 @@ else{
 // item
 $sql = "CREATE TABLE Item
 (
-callNumber INT NOT NULL
-title CHAR(50)
-year INT
-publisher CHAR(50)
-category CHAR(20)
+callNumber INT NOT NULL,
+title CHAR(50),
+year INT,
+publisher CHAR(50),
+category CHAR(20),
+PRIMARY KEY(callNumber)
 )";
+// Execute query
+if (mysqli_query($con,$sql)){
+  echo "<br />Item table created successfully";
+}
+else{
+  echo "<br />Error creating table: " . mysqli_error($con);
+}
+
+// item copy
+$sql = "CREATE TABLE ItemCopy
+(
+callNumber INT NOT NULL,
+copyNo INT NOT NULL AUTO_INCREMENT,
+name CHAR(20) ,
+PRIMARY KEY(callNumber, copyNo),
+FOREIGN KEY (callNumber) REFERENCES Item(callNumber),
+FOREIGN KEY (name) REFERENCES Branch(name),
+)";
+// Execute query
+if (mysqli_query($con,$sql)){
+  echo "<br />ItemCopy table created successfully";
+}
+else{
+  echo "<br />Error creating table: " . mysqli_error($con);
+}
+
+// branch
+$sql = "CREATE TABLE Branch
+(
+name CHAR(20) NOT NULL ,
+address CHAR(30) ,
+phone INT, 
+PRIMARY KEY(name),
+)";
+// Execute query
+if (mysqli_query($con,$sql)){
+  echo "<br />Branch table created successfully";
+}
+else{
+  echo "<br />Error creating table: " . mysqli_error($con);
+}
+
+// reserve request
+$sql = "CREATE TABLE ReserveRequest
+(
+rid INT NOT NULL AUTO-INCREMENT
+issueDate CHAR(10),
+expireDate CHAR(10),
+noOfCopies INT,
+name CHAR(20),
+callNumber INT,
+bid INT,
+PRIMARY KEY(rid),
+FOREIGN KEY (name) REFERENCES Branch(name),
+FOREIGN KEY (callNumber) REFERENCES Item(callNumber),
+FOREIGN KEY (bid) REFERENCES Borrower(bid),
+)";
+// Execute query
+if (mysqli_query($con,$sql)){
+  echo "<br />ReserveRequest table created successfully";
+}
+else{
+  echo "<br />Error creating table: " . mysqli_error($con);
+}
 
 ?>
 
