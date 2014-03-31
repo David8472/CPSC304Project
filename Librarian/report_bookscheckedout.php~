@@ -19,7 +19,6 @@
 	} else {*/
 		$result=mysqli_query($con,"SELECT * FROM Book A, Borrowing B WHERE A.callNumber=B.callNumber ORDERED BY B.callNumber");
 	//}
-
 	// table header
 	echo "<table border='1'>
 	<tr>
