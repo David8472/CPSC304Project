@@ -5,6 +5,12 @@
 	  echo "<br />Failed to connect to MySQL: " . mysqli_connect_error();
 	}
 	
+	//test
+	mysqli_query($con, "INSERT INTO Book (callNumber, isbn, title, mainAuthor, publisher, year)
+		     VALUES(12345, 54321, 'hello world', 'james', 'worms', 1992)");
+	mysqli_query($con, "INSERT INTO Borrowing (bid, callNumber, copyNo, outDate, inDate)
+		     VALUES(12345, 3, 1993, 1994)");
+	
 	//if has subject or doesn't
 	if(!empty($_POST['searchsubject'])) {
 		$result=mysqli_query($con,"SELECT * FROM Book A, Borrowing B, HasSubject C WHERE C.subject=searchsubject AND B.callNumber=C.callNumber AND A.callNumber=B.callNumber ORDER BY B.callNumber");
