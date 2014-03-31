@@ -1,24 +1,17 @@
-PHP learned from http://www.w3schools.com/PHP/
-<br />
-<br />
-
 <?php
-
-
-
 $con=mysqli_connect("localhost","root","");
 // Check connection
 if (mysqli_connect_errno()){
-  echo "<br />Failed to connect to MySQL: " . mysqli_connect_error();
+  echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
 
 // Create database
 $sql="CREATE DATABASE DBCPSC304";
 if (mysqli_query($con,$sql)){
-  echo "<br />DBCPSC304 database created successfully";
+  echo "DBCPSC304 database created successfully";
 }
 else{
-  echo "<br />Error creating database: " . mysqli_error($con);
+  echo "Error creating database: " . mysqli_error($con);
 }
 
 mysqli_close($con);
@@ -223,6 +216,7 @@ else{
 } 
 
 
+<<<<<<< HEAD
 ?>
 
 <br />
@@ -230,3 +224,6 @@ else{
 <br />
 <br />
 Please click your browser's "Back" button to proceed
+=======
+?>
+>>>>>>> 813a2b24c444332aa362ebb6c290cdce5357f54d
