@@ -6,12 +6,22 @@
 	}
 
 	//add book to library
-	mysqli_query($con,"INSERT INTO Book (callNumber, isbn, title, mainAuthor, publisher, year)
-	VALUES($_POST['callNumber'], $_POST['isbn'], $_POST['title'], $_POST['mainAuthor'], $_POST['publisher'], $_POST['year'])");
+	$sql1="INSERT INTO Book (callNumber, isbn, title, mainAuthor, publisher, year)
+	VALUES
+	('$_POST[callNumber]', '$_POST[isbn]', '$_POST[title]', '$_POST[mainAuthor]', '$_POST[publisher]', '$_POST[year]')";
+	
+	if(!mysqli_query($con,$sql1)) {
+		die('Error: ' . mysqli_error($con));	
+	}
 
 	//add copy
-	mysqli_query($con,"INSERT INTO BookCopy(callNumber, status)
-	VALUES($_POST['callNumber'], $_POST['status'])");
+	$sql2="INSERT INTO BookCopy(callNumber, status)
+	VALUES
+	('$_POST[callNumber]', '$_POST[status]')";
+	
+	if(!mysqli_query($con,$sql2)) {
+		die('Error: ' . mysqli_error($con));	
+	}
 
 	mysqli_close($con);
 ?>
