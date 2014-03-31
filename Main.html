@@ -12,22 +12,23 @@
 <body>
 
 
-<form action="userActions.html" method="post">
-What kind of user are you?<br>
-<input type="radio" name="userType" value="Borrower">Borrower<br>
-<input type="radio" name="userType" value="Clerk">Clerk<br>
-<input type="radio" name="userType" value="Faculty">Faculty<br>
-<input type="submit">
+
+What kind of user are you?
+
+<form target="iframe_actions" action="borrowerActions.html" method="post">
+<input type="submit" value="Borrower">
 </form>
 
-<br />
-<br />
-<br /> 
-
-<form action="TableMakerCPSC304P3.php" method="post">
-No Database Created?  Click here!<br /> 
-<input type="submit">
+    
+<form target="iframe_actions" action="clerkActions.html" method="post">
+<input type="submit" value="Clerk">
 </form>
+
+
+<form target="iframe_actions" action="librarianActions.html" method="post">
+<input type="submit" value="Librarian">
+</form>
+
 
 </body>
 </html>
