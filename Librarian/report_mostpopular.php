@@ -7,7 +7,7 @@
 
 	//most popular books
 	$result=mysqli_query($con,"SELECT * FROM Book A, Borrowing B WHERE A.callNumber=B.callNumer AND year=substr(B.outDate,-4) ORDERED BY B.borid");
-	echo $_POST['number'] . " most popular books in " . $_POST['year']<br>;
+	echo $_POST['number'] . " most popular books in " . $_POST['year'] . "\n";
 
 	// table header
 	echo "<table border='1'>
@@ -34,7 +34,7 @@
 		}
 	$x++;
 	}
-	echo "</table>"
+	echo "</table>";
 
 	mysqli_close($con);
 ?>

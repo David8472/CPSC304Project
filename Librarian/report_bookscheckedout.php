@@ -8,7 +8,7 @@
 	//if has subject or doesn't
 	if(!empty($_POST['searchsubject'])) {
 		$result=mysqli_query($con,"SELECT * FROM Book A, Borrowing B, HasSubject C WHERE C.subject=searchsubject AND B.callNumber=C.callNumber AND A.callNumber=B.callNumber ORDER BY B.callNumber");
-	echo "Subject: " . $_POST['searchsubject']<br>;
+	echo "Subject: " . $_POST['searchsubject' . "\n"];
 	} else {
 		$result=mysqli_query($con,"SELECT * FROM Book A, Borrowing B, HasSubject C WHERE A.callNumber=B.callNumber ORDERED BY B.callNumber");
 	}
@@ -37,7 +37,7 @@
 		echo "<td>" . $row['inDate'] . "</td>";
 		echo "</tr>";
 	}
-	echo "</table>"
+	echo "</table>";
 	
 	mysqli_close($con);
 ?>
