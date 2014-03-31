@@ -5,9 +5,11 @@
 	  echo "<br />Failed to connect to MySQL: " . mysqli_connect_error();
 	}
 
+	//add book to library
 	mysqli_query($con,"INSERT INTO Book (callNumber, isbn, title, mainAuthor, publisher, year)
 	VALUES($_POST['callNumber'], $_POST['isbn'], $_POST['title'], $_POST['mainAuthor'], $_POST['publisher'], $_POST['year'])");
 
+	//add copy
 	mysqli_query($con,"INSERT INTO BookCopy(callNumber, status)
 	VALUES($_POST['callNumber'], $_POST['status'])");
 

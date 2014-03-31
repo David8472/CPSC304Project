@@ -9,7 +9,7 @@
 	VALUES($_POST['callNumber'], $_POST['isbn'], $_POST['title'], $_POST['mainAuthor'], $_POST['publisher'], $_POST['year'])");
 
 	mysqli_query($con,"INSERT INTO BookCopy(callNumber, status)
-	VALUES($_POST['callNumber'], $_POST['name'])");
+	VALUES($_POST['callNumber'], $_POST['status'])");
 
 	mysqli_close($con);
 ?>
