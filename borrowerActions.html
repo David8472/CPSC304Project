@@ -30,6 +30,7 @@ Place a hold
 <br>
 <form target="iframe_php" action="placeHold.php" method="post">
 Enter Call Number: <input type="text" name="callNumber">
+Enter Borrower ID: <input type="text" name="bid">
 <input type="submit">
 </form>
 <br>
@@ -37,7 +38,7 @@ Enter Call Number: <input type="text" name="callNumber">
 
 Pay a fine
 <br>
-<form action="payFine.php" method="post">
+<form target="iframe_php" action="payFine.php" method="post">
 Enter Fine ID: <input type="text" name="fid">
 <input type="submit">
 </form>
