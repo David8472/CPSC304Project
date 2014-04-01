@@ -5,10 +5,10 @@ $con=mysqli_connect("localhost","root","", "DBCPSC304");
 if (mysqli_connect_errno()){
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
-$callNumber = '$_POST[callNumber]';
-$copyNumber = '$_POST[copyNo]';
-//$callNumber = '1111';
-//$copyNo = '1';
+
+$callNumber = $_POST['callNumber'];
+$copyNo = $_POST['copyNo'];
+
 
 $today = date('Y-m-d');
 
