@@ -5,6 +5,7 @@
 	  echo "<br />Failed to connect to MySQL: " . mysqli_connect_error();
 	} else {
 		
+		echo "Report of books checked out: ";
 		//test
 		/*mysqli_query($con, "INSERT INTO Book (callNumber, isbn, title, mainAuthor, publisher, year)
 			     VALUES(12345, 54321, 'hello', 'james', 'worms', 1992)");
@@ -19,15 +20,14 @@
 		//	$result=mysqli_query($con,"SELECT * FROM Book A, Borrowing B, HasSubject C WHERE C.subject=searchsubject AND B.callNumber=C.callNumber AND A.callNumber=B.callNumber ORDER BY B.callNumber");
 		//echo "Subject: " . $_POST['searchsubject' . "\n"];
 		//} else {
-			$nosubject="SELECT *
-					FROM Book,
-					INNER JOIN Borrowing
-					ON Book.callNumber=Borrowing.callNumber
-					INNER JOIN BookCopy
-					ON Borrowing.callNumber=BookCopy.callNumber
-					WHERE BookCopy.status='out'
-					ORDERED BY BookCopy.callNumber";
-			$result=mysqli_query($con, $nosubject);
+			$result=mysqli_query($con, "SELECT *
+						FROM Book,
+						INNER JOIN Borrowing
+						 ON Book.callNumber=Borrowing.callNumber
+						INNER JOIN BookCopy
+						 ON Borrowing.callNumber=BookCopy.callNumber
+						WHERE BookCopy.status='out'
+						ORDERED BY BookCopy.callNumber");
 		//}
 		
 		// Check for errors
