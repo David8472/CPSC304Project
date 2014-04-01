@@ -44,7 +44,7 @@ if(mysqli_num_rows($results) > 0){
     $days = intval($row['bookTimeLimit']);
     $outDate = $row['outDate'];
     $dueDate = date("Y-m-d",strtotime("$outDate + $days day"));
-    echo "$outDate and $dueDate and $today";
+    //echo "$outDate and $dueDate and $today";
     if($dueDate < $today) {
       echo "This book (".$row['callNumber'].
           "-".$row['copyNo'].
