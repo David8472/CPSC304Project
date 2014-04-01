@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>CPSC304 - Clerk Actions</title>
+</head>
+
+<body>
+Add a Borrower
+<br>
+<form target="iframe_php" action="ClerkAddBorrower.php" method="post">
+Enter Name: <input type="text" name="name"><br>
+Enter Password: <input type="text" name="password"><br>
+Enter Address: <input type="text" name="address"><br>
+Enter Phone: <input type="text" name="phone"><br>
+Enter Email Address: <input type="text" name="emailAddress"><br>
+Enter SIN or Student#: <input type="text" name="sinOrStNo"><br>
+Enter Expiry Date: <input type="text" name="expiryDate"><br>
+Enter Type: <input type="text" name="type"><br>
+<input type="submit">
+</form>
+<br>
+<br>
+    
+Check Out Books
+<br>
+<form target="iframe_php" action="ClerkCheckout.php" method="post">
+Enter Borrower ID: <input type="text" name="bid"><br>
+Enter First Book's Call Number: <input type="text" name="callNumber1"><br>
+Enter Second Book's Call Number: <input type="text" name="callNumber2"><br>
+Enter Third Book's Call Number: <input type="text" name="callNumber3"><br>
+Enter Fourth Book's Call Number: <input type="text" name="callNumber4"><br>
+Enter Fifth Book's Call Number: <input type="text" name="callNumber5"><br>
+<input type="submit">
+</form>
+<br>
+<br>
+
+Check Overdue Books
+<br>
+<form target="iframe_php" action="ClerkOverdue.php" method="post">
+<input type="submit">
+</form>
+<br>
+<br>
+
+Process a Return
+<br>
+<form target="iframe_php" action="ClerkReturn.php" method="post">
+Enter Call Number: <input type="text" name="callNumber"><br>
+Enter Copy Number: <input type="text" name="copyNo"><br>
+<input type="submit">
+</form>
+
+</body>
+</html>

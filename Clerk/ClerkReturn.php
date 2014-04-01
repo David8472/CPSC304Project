@@ -3,12 +3,13 @@
 $con=mysqli_connect("localhost","root","", "DBCPSC304");
 // Check connection
 if (mysqli_connect_errno()){
-  echo "<br />Failed to connect to MySQL: " . mysqli_connect_error();
+  echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
 $callNumber = '$_POST[callNumber]';
 $copyNumber = '$_POST[copyNo]';
 //$callNumber = '1111';
 //$copyNo = '1';
+
 $today = date('Y-m-d');
 
 // Check to see if book has been taken out

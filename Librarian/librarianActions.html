@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>CPSC304 - Librarian Actions</title>
+</head>
+
+<body>
+Add a New Book
+<br>
+<form target="iframe_php" action="add_book_copy.php" method="post">
+Enter Call Number: <input type="text" name="callNumber"><br>
+Enter ISBN: <input type="text" name="isbn"><br>
+Enter Title: <input type="text" name="title"><br>
+Enter Author: <input type="text" name="mainAuthor"><br>
+Enter Publisher: <input type="text" name="publisher"><br>
+Enter Year: <input type="text" name="year"><br>
+Enter Subject: <input type="text" name="subject"><br>
+<input type="submit">
+</form>
+<br>
+<br>    
+    
+
+Check Checked Out Books
+<br>
+<form target="iframe_php" action="report_bookscheckedout.php" method="post">
+    Enter Subject: <input type="text" name="subject"><br>
+<input type="submit">
+</form>
+<br>
+<br>
+
+N Most Popular Books By Year
+<br>
+<form target="iframe_php" action="placeHold.php" method="post">
+Enter Year: <input type="text" name="year"><br>
+Enter N: <input type="text" name="n"><br>
+<input type="submit">
+</form>
+
+
+
+</body>
+</html>

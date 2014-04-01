@@ -3,7 +3,7 @@
 $con=mysqli_connect("localhost","root","","DBCPSC304");
 // Check connection
 if (mysqli_connect_errno()){
-  echo "<br />Failed to connect to MySQL: " . mysqli_connect_error();
+  echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
 
 $sql="DELETE FROM Borrower";
@@ -89,4 +89,7 @@ mysqli_query($con,"INSERT INTO HoldRequest (bid,callNumber,issuedDate)
              VALUES('3','1111','2013-02-03')");
 
 mysqli_close($con);
+
+
+echo "Dummy values inserted";
 ?>

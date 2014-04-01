@@ -3,7 +3,7 @@
 $con=mysqli_connect("localhost","root","", "DBCPSC304");
 // Check connection
 if (mysqli_connect_errno()){
-  echo "<br />Failed to connect to MySQL: " . mysqli_connect_error();
+  echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
 
 $today = date('Y-m-d');
@@ -40,7 +40,7 @@ if (!isset($_POST["submit"]))
   <form method="post" action="<?php echo $_SERVER["PHP_SELF"];?>">
   To: <input type="text" name="to"><br>
   Subject: <input type="text" name="subject"><br>
-  Message: <textarea rows="10" cols="40" name="message"></textarea><br>
+  Message:<br> <textarea rows="10" cols="40" name="message"></textarea><br>
   <input type="submit" name="submit" value="Submit Feedback">
   </form>
   <?php 
