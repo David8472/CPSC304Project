@@ -37,14 +37,14 @@ if(mysqli_num_rows($result)>0) {
                 $available = mysqli_query($con,"SELECT copyNo
                                           FROM BookCopy
                                           INNER JOIN Book on BookCopy.callNumber = $book
-                                          WHERE status = 'in'
-                                            OR status = 'on-Hold'
+                                          WHERE status = 'IN'
+                                            OR status = 'ON-HOLD'
                                           LIMIT 1");
               } else {
                 $available = mysqli_query($con,"SELECT copyNo
                                           FROM BookCopy
                                           INNER JOIN Book on BookCopy.callNumber = $book
-                                          WHERE status = 'in'
+                                          WHERE status = 'IN'
                                           LIMIT 1");
               }
                 if(mysqli_num_rows($available) > 0) {
@@ -52,7 +52,7 @@ if(mysqli_num_rows($result)>0) {
                   $copyNo =  $row["copyNo"];
                   echo "$book copy $copyNo is available<br>";
                   mysqli_query($con,"UPDATE BookCopy
-                               SET status='out'
+                               SET status='OUT'
                                WHERE callNumber = $book
                                 AND copyNo = $copyNo");
                   $outDate=date("Y-m-d");
