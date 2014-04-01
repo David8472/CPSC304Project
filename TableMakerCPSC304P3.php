@@ -142,7 +142,7 @@ else{
 $sql = "CREATE TABLE BookCopy
 (
 callNumber CHAR(50) NOT NULL, 
-copyNo INT NOT NULL AUTO_INCREMENT,
+copyNo INT NOT NULL ,
 PRIMARY KEY(copyNo),
 FOREIGN KEY (callNumber) REFERENCES Book(callNumber),
 status CHAR(7)
