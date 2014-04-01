@@ -1,3 +1,6 @@
+<br />
+<br />
+
 <?php
 $con=mysqli_connect("localhost","root","");
 // Check connection
@@ -5,6 +8,11 @@ if (mysqli_connect_errno()){
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
 
+$sql="DROP DATABASE IF EXISTS DBCPSC304";
+if (!mysqli_query($con,$sql))
+  {
+    die('Error: ' . mysqli_error($con));
+  }
 // Create database
 $sql="CREATE DATABASE DBCPSC304";
 if (mysqli_query($con,$sql)){
@@ -37,7 +45,7 @@ address CHAR(50),
 phone  CHAR(16),
 emailAddress CHAR(50),
 sinOrStNO CHAR(16),
-expiryDate CHAR(10),
+expiryDate DATE,
 type CHAR(8)
 )"; 
   
@@ -159,7 +167,7 @@ callNumber CHAR(50) NOT NULL,
 PRIMARY KEY(hid),
 FOREIGN KEY (callNumber) REFERENCES Book(callNumber),
 FOREIGN KEY (bid) REFERENCES Borrower(bid),
-issuedDate CHAR(10)
+issuedDate DATE
 )"; 
   
 // Execute query
@@ -182,8 +190,8 @@ PRIMARY KEY(borid),
 FOREIGN KEY (callNumber) REFERENCES Book(callNumber),
 FOREIGN KEY (bid) REFERENCES Borrower(bid),
 FOREIGN KEY (copyNo) REFERENCES BookCopy(copyNo),
-outDate CHAR(10),
-inDate CHAR(10)
+outDate DATE,
+inDate DATE
 )"; 
   
 // Execute query
@@ -203,8 +211,8 @@ borid INT NOT NULL,
 PRIMARY KEY(fid),
 FOREIGN KEY (borid) REFERENCES Borrowing(borid),
 amount INT,
-issuedDate CHAR(10),
-paidDate CHAR(10)
+issuedDate DATE,
+paidDate DATE
 )"; 
   
 // Execute query
@@ -216,7 +224,6 @@ else{
 } 
 
 
-<<<<<<< HEAD
 ?>
 
 <br />
@@ -224,6 +231,3 @@ else{
 <br />
 <br />
 Please click your browser's "Back" button to proceed
-=======
-?>
->>>>>>> 813a2b24c444332aa362ebb6c290cdce5357f54d
