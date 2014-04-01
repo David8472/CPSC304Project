@@ -104,7 +104,7 @@ $sql = "CREATE TABLE HasAuthor
 callNumber CHAR(50) NOT NULL,
 FOREIGN KEY (callNumber) REFERENCES Book(callNumber),
 name CHAR(50) NOT NULL,
-PRIMARY KEY(name)
+PRIMARY KEY(name, callNumber)
 )"; 
   
 // Execute query
@@ -123,7 +123,7 @@ $sql = "CREATE TABLE HasSubject
 (
 callNumber CHAR(50) NOT NULL, 
 subject CHAR(50) NOT NULL,
-PRIMARY KEY(subject),
+PRIMARY KEY(subject, callNumber),
 FOREIGN KEY (callNumber) REFERENCES Book(callNumber)
 )"; 
   
@@ -143,7 +143,7 @@ $sql = "CREATE TABLE BookCopy
 (
 callNumber CHAR(50) NOT NULL , 
 copyNo INT NOT NULL,
-PRIMARY KEY(copyNo),
+PRIMARY KEY(copyNo, callNumber),
 FOREIGN KEY (callNumber) REFERENCES Book(callNumber),
 status CHAR(7)
 )"; 
