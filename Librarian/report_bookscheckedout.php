@@ -25,16 +25,21 @@
 						 ON BookCopy.callNumber=Borrowing.callNumber
 						INNER JOIN HasSubject
 						 ON HasSubject.callNumber=BookCopy.callNumber
-						WHERE BookCopy.status='out' AND HasSubject.subject='$subject'
+						WHERE BookCopy.status='OUT' AND HasSubject.subject='$subject'
 						ORDER BY BookCopy.callNumber");
 		//echo "Subject: " . $_POST['searchsubject' . "\n"];
 		echo "Subject: " . $subject . "<br>";
 		} else {
 			$result=mysqli_query($con, "SELECT *
 						FROM BookCopy
-						INNER JOIN Borrowing
+						INNER JOIN Borrowing Borrowing
 						 ON BookCopy.callNumber=Borrowing.callNumber
-						WHERE BookCopy.status='out'
+						INNER JOIN Borrower
+						 ON Borrowing.bid = Borrower.bid
+						INNER JOIN BorrowerType
+						 ON Borrower.type = BorrowerType.type
+						WHERE BookCopy.status='OUT'
+						 AND BookCopy.copyNo = Borrowing.copyNo
 						ORDER BY BookCopy.callNumber");
 		}
 		
@@ -54,11 +59,13 @@
 			</tr>";
 			//table items
 			while($row = mysqli_fetch_array($result)) {
-				echo "<tr>";
-				echo "<td>" . $row['callNumber'] . "</td>";
-				echo "<td>" . $row['outDate'] . "</td>";
-				echo "<td>" . $row['inDate'] . "</td>";
+				$outDate=$row['outDate'];
+				$days=$row['bookTimeLimit'];
 				$dueDate = date("Y-m-d",strtotime("$outDate + $days day"));
+				echo "<tr>";
+				echo "<td>" . $row['callNumber'] . "-".$row['copyNo']."</td>";
+				echo "<td>" . $row['outDate'] . "</td>";
+				echo "<td>" . $dueDate . "</td>";
 				if($dueDate < $today) {
 					echo "<td>" . 'YES' . "</td>";
 				} else {
