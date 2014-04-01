@@ -101,10 +101,10 @@ else{
 //Make HasAuthor table
 $sql = "CREATE TABLE HasAuthor
 (
-callNumber CHAR(50) NOT NULL, 
+callNumber CHAR(50) NOT NULL,
+FOREIGN KEY (callNumber) REFERENCES Book(callNumber),
 name CHAR(50) NOT NULL,
-PRIMARY KEY(name),
-FOREIGN KEY (callNumber) REFERENCES Book(callNumber)
+PRIMARY KEY(name)
 )"; 
   
 // Execute query
@@ -141,8 +141,8 @@ else{
 //Make BookCopy table
 $sql = "CREATE TABLE BookCopy
 (
-callNumber CHAR(50) NOT NULL, 
-copyNo INT NOT NULL ,
+callNumber CHAR(50) NOT NULL , 
+copyNo INT NOT NULL,
 PRIMARY KEY(copyNo),
 FOREIGN KEY (callNumber) REFERENCES Book(callNumber),
 status CHAR(7)
