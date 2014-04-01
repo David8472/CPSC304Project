@@ -6,9 +6,9 @@ if (mysqli_connect_errno()){
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
 
-$bid = $_POST'['bid'];
+$bid = $_POST['bid'];
 
-$bookList = array($_POST'['callNumber1'],$_POST'['callNumber2'],$_POST'['callNumber3'],$_POST'['callNumber4'],$_POST'['callNumber5']);
+$bookList = array($_POST['callNumber1'],$_POST['callNumber2'],$_POST['callNumber3'],$_POST['callNumber4'],$_POST['callNumber5']);
 
 $numOfBooks = count($bookList);
 $stack=array();
