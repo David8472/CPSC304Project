@@ -12,9 +12,11 @@
 		echo $n . " most popular books in " . $year . "\n";
 		
 		//most popular books
-		$result=mysqli_query($con,"SELECT * FROM Book, Borrowing
-				     WHERE Book.callNumber=Borrowing.callNumber
-				     AND year=substr(Borrowing.outDate, 0, 4)
+		$result=mysqli_query($con,"SELECT *
+				     FROM Book
+				     INNER JOIN Borrowing
+				     ON Book.callNumber=Borrowing.callNumber
+				     WHERE year=substr(Borrowing.outDate, 0, 4)
 				     ORDERED BY Borrowing.borid");
 		
 		if (!$results)
