@@ -93,7 +93,7 @@ mysqli_query($con,"INSERT INTO BookCopy (copyNo, callNumber, status)
 mysqli_query($con,"INSERT INTO BookCopy (copyNo, callNumber, status)
              VALUES ('1','1111','IN')");
 mysqli_query($con,"INSERT INTO BookCopy (copyNo, callNumber, status)
-             VALUES ('1','1111','OUT')");
+             VALUES ('2','1111','OUT')");
 mysqli_query($con,"INSERT INTO BookCopy (copyNo, callNumber, status)
              VALUES ('3','1111','IN')");
 mysqli_query($con,"INSERT INTO BookCopy (copyNo, callNumber, status)
@@ -115,9 +115,9 @@ mysqli_query($con,"INSERT INTO HoldRequest (bid,callNumber,issuedDate)
 
 // Borrowing             
 mysqli_query($con,"INSERT INTO Borrowing (bid,callNumber,copyNo,outDate,inDate)
-             VALUES('1','1111','1','2013-03-02','0-0-0')");
+             VALUES('1','1111','2','2013-03-02','0-0-0')");
 mysqli_query($con,"INSERT INTO Borrowing (bid,callNumber,copyNo,outDate,inDate)
-             VALUES('1','1112','1','2013-02-02','0-0-0')");
+             VALUES('1','1112','3','2013-02-02','0-0-0')");
 
 
 mysqli_close($con);
