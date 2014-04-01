@@ -54,7 +54,7 @@ if (mysqli_query($con,$sql)){
   echo "<br />Borrower table created successfully";
 }
 else{
-  echo "<br />Error creating table: " . mysqli_error($con);
+  echo "<br />Error creating Borrower table: " . mysqli_error($con);
 }
   
   
@@ -71,7 +71,7 @@ if (mysqli_query($con,$sql)){
   echo "<br />BorrowerType table created successfully";
 }
 else{
-  echo "<br />Error creating table: " . mysqli_error($con);
+  echo "<br />Error creating BT table: " . mysqli_error($con);
 }
 
 
@@ -93,7 +93,7 @@ if (mysqli_query($con,$sql)){
   echo "<br />Book table created successfully";
 }
 else{
-  echo "<br />Error creating table: " . mysqli_error($con);
+  echo "<br />Error creating Book table: " . mysqli_error($con);
 }
 
 
@@ -112,7 +112,7 @@ if (mysqli_query($con,$sql)){
   echo "<br />HasAuthor table created successfully";
 }
 else{
-  echo "<br />Error creating table: " . mysqli_error($con);
+  echo "<br />Error creating HA table: " . mysqli_error($con);
 }
   
   
@@ -132,7 +132,7 @@ if (mysqli_query($con,$sql)){
   echo "<br />HasSubject table created successfully";
 }
 else{
-  echo "<br />Error creating table: " . mysqli_error($con);
+  echo "<br />Error creating HS table: " . mysqli_error($con);
 }
   
 
@@ -143,7 +143,7 @@ $sql = "CREATE TABLE BookCopy
 (
 callNumber CHAR(50) NOT NULL , 
 copyNo INT NOT NULL,
-PRIMARY KEY(copyNo),
+CONSTRAINT pk_BookCopy PRIMARY KEY(callNumber, copyNo),
 FOREIGN KEY (callNumber) REFERENCES Book(callNumber),
 status CHAR(7)
 )"; 
@@ -153,7 +153,7 @@ if (mysqli_query($con,$sql)){
   echo "<br />BookCopy table created successfully";
 }
 else{
-  echo "<br />Error creating table: " . mysqli_error($con);
+  echo "<br />Error creating BC table: " . mysqli_error($con);
 }
 
 
@@ -175,7 +175,7 @@ if (mysqli_query($con,$sql)){
   echo "<br />HoldRequest table created successfully";
 }
 else{
-  echo "<br />Error creating table: " . mysqli_error($con);
+  echo "<br />Error creating HR table: " . mysqli_error($con);
 }
   
   
@@ -189,7 +189,7 @@ copyNo INT NOT NULL,
 PRIMARY KEY(borid),
 FOREIGN KEY (callNumber) REFERENCES Book(callNumber),
 FOREIGN KEY (bid) REFERENCES Borrower(bid),
-FOREIGN KEY (copyNo) REFERENCES BookCopy(copyNo),
+FOREIGN KEY (callNumber, copyNo) REFERENCES BookCopy(callNumber, copyNo),
 outDate DATE,
 inDate DATE
 )"; 
@@ -199,7 +199,7 @@ if (mysqli_query($con,$sql)){
   echo "<br />Borrowing table created successfully";
 }
 else{
-  echo "<br />Error creating table: " . mysqli_error($con);
+  echo "<br />Error creating Borrowing table: " . mysqli_error($con);
 }
 
 
@@ -220,7 +220,7 @@ if (mysqli_query($con,$sql)){
   echo "<br />Fine table created successfully";
 }
 else{
-  echo "<br />Error creating table: " . mysqli_error($con);
+  echo "<br />Error creating Fine table: " . mysqli_error($con);
 }  
 
 ?>
