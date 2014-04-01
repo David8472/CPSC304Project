@@ -17,21 +17,35 @@ $results=mysqli_query($con,"SELECT *
 if (!$results){
   die('Error: ' . mysqli_error($con));
 } else {
+  // table header
+  echo "<table border='1'>
+      <tr>
+      <th>bid</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Catalogue No</th>
+      <th>Checkout Date</th>
+      <th>Due Date</th>
+      </tr>";
   while($row = mysqli_fetch_array($results)) {
     if($row['inDate'] == '0000-00-00'){
       $days = intval($row['bookTimeLimit']);
       $outDate = $row['outDate'];
       $dueDate = date("Y-m-d",strtotime("$outDate + $days day"));
+      //table items
       if($dueDate < $today) {
-        echo "Bid (".$row['bid'].
-        ") Email (".$row['emailAddress'].
-        ") callNumber (".$row['callNumber'].
-        ") Taken Out (".$row['outDate'].
-        ") Due (".$dueDate;
-        echo ")<br>";
+        echo "<tr>";
+        echo "<td>".$row['bid']."</td>";
+        echo "<td>".$row['name']."</td>";
+        echo "<td>".$row['emailAddress']."</td>";
+        echo "<td>".$row['callNumber']."-".$row['copyNo']."</td>";
+        echo "<td>".$row['outDate']."</td>";
+        echo "<td>".$dueDate."</td>";
+        echo "</tr>";
       }
     }
   }
+  echo "</table>";
 }
           
 if (!isset($_POST["submit"]))
