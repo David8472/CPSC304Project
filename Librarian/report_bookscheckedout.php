@@ -5,7 +5,7 @@
 	  echo "<br />Failed to connect to MySQL: " . mysqli_connect_error();
 	} else {
 		
-		echo "Report of books checked out: ";
+		echo "Report of books checked out: <br>";
 		//test
 		/*mysqli_query($con, "INSERT INTO Book (callNumber, isbn, title, mainAuthor, publisher, year)
 			     VALUES(12345, 54321, 'hello', 'james', 'worms', 1992)");
@@ -14,19 +14,37 @@
 		mysqli_query($con, "INSERT INTO BookCopy (callNumber, status)
 			     VALUES(12345, 'out')");*/
 	
+		/*$sql="INSERT INTO HasSubject (callNumber, subject)
+			VALUES
+			(12345, 'horror')";
+		if(!mysqli_query($con,$sql)) {
+			die('Error: ' . mysqli_error($con));	
+		}*/
+		$localtime = localtime();
+		
+		$type = 'horror';
 		
 		//if has subject or doesn't
 		//if(!empty($_POST['searchsubject'])) {
-		//	$result=mysqli_query($con,"SELECT * FROM Book A, Borrowing B, HasSubject C WHERE C.subject=searchsubject AND B.callNumber=C.callNumber AND A.callNumber=B.callNumber ORDER BY B.callNumber");
+		if(!empty($type)) {
+			$result=mysqli_query($con, "SELECT *
+						FROM BookCopy
+						INNER JOIN Borrowing
+						 ON BookCopy.callNumber=Borrowing.callNumber
+						INNER JOIN HasSubject
+						 ON HasSubject.callNumber=BookCopy.callNumber
+						WHERE BookCopy.status='out' AND HasSubject.subject='$type'
+						ORDER BY BookCopy.callNumber");
 		//echo "Subject: " . $_POST['searchsubject' . "\n"];
-		//} else {
+		echo "Subject: " . $type . "<br>";
+		} else {
 			$result=mysqli_query($con, "SELECT *
 						FROM BookCopy
 						INNER JOIN Borrowing
 						 ON BookCopy.callNumber=Borrowing.callNumber
 						WHERE BookCopy.status='out'
 						ORDER BY BookCopy.callNumber");
-		//}
+		}
 		
 		if (!$result)
 		  {
@@ -40,6 +58,7 @@
 			<th>Call Number</th> 
 			<th>Check out date</th>
 			<th>Due date</th>
+			<th>Overdue</th>
 			</tr>";
 			//table items
 			while($row = mysqli_fetch_array($result)) {
@@ -47,6 +66,11 @@
 				echo "<td>" . $row['callNumber'] . "</td>";
 				echo "<td>" . $row['outDate'] . "</td>";
 				echo "<td>" . $row['inDate'] . "</td>";
+				if($localtime > '$row[inDate]') {
+					echo "<td>" . 'YES' . "</td>";
+				} else {
+					echo "<td>" . 'NO' . "</td>";
+				}
 				echo "</tr>";
 			}
 			echo "</table>";

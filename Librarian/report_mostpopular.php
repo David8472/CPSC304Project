@@ -12,11 +12,11 @@
 		echo $n . " most popular books in " . $year . "\n";
 		
 		//most popular books
-		$result=mysqli_query($con,"SELECT *
+		$result=mysqli_query($con,"SELECT DISTINCT *
 				     FROM Borrowing
 				     INNER JOIN Book
 				     ON Borrowing.callNumber=Book.callNumber
-				     WHERE substr(Borrowing.outDate, 0, 4)=year
+				     WHERE substr(Borrowing.outDate, 0, 4)=$year
 				     ORDER BY Borrowing.borid");
 		
 		if (!$result)
@@ -37,7 +37,7 @@
 			</tr>";
 			//table items
 			$x = 0;
-			while($x <= $year) {
+			while($x <= $n) {
 				while($row = mysqli_fetch_array($result)) {
 					echo "<tr>";
 					echo "<td>" . $row['callNumber'] . "</td>";
