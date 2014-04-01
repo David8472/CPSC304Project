@@ -8,10 +8,10 @@
 <body>
 Search for books
 <br>
-<form target="iframe_php" action="Borrower/searchBooks.php" method="post">
-Enter Title: <input type="text" name="title">
-Enter Author: <input type="text" name="author">
-Enter Subject: <input type="text" name="subject">
+<form target="iframe_php" action="searchBooks.php" method="post">
+Enter Title: <input type="text" name="title"><br>
+Enter Author: <input type="text" name="author"><br>
+Enter Subject: <input type="text" name="subject"><br>
 <input type="submit">
 </form>
 <br>
@@ -19,8 +19,8 @@ Enter Subject: <input type="text" name="subject">
 
 Check your account
 <br>
-<form target="iframe_php" action="Borrower/checkAccount.php" method="post">
-Enter Borrower ID: <input type="text" name="bid">
+<form target="iframe_php" action="checkAccount.php" method="post">
+Enter Borrower ID: <input type="text" name="bid"><br>
 <input type="submit">
 </form>
 <br>
@@ -28,9 +28,9 @@ Enter Borrower ID: <input type="text" name="bid">
 
 Place a hold
 <br>
-<form target="iframe_php" action="Borrower/placeHold.php" method="post">
-Enter Call Number: <input type="text" name="callNumber">
-Enter Borrower ID: <input type="text" name="bid">
+<form target="iframe_php" action="placeHold.php" method="post">
+Enter Call Number: <input type="text" name="callNumber"><br>
+Enter Borrower ID: <input type="text" name="bid"><br>
 <input type="submit">
 </form>
 <br>
@@ -38,11 +38,11 @@ Enter Borrower ID: <input type="text" name="bid">
 
 Pay a fine
 <br>
-<form target="iframe_php" action="Borrower/payFine.php" method="post">
-Enter Fine ID: <input type="text" name="fid">
+<form target="iframe_php" action="payFine.php" method="post">
+Enter Fine ID: <input type="text" name="fid"><br>
 <input type="submit">
 </form>
-<br>
-<br>
+
+
 </body>
 </html>

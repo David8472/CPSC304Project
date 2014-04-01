@@ -3,13 +3,13 @@
 $con=mysqli_connect("localhost","root","", "DBCPSC304");
 // Check connection
 if (mysqli_connect_errno()){
-  echo "<br />Failed to connect to MySQL: " . mysqli_connect_error();
+  echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
 
-//$bid = $_POST'['bid'];
-$bid = "3";
-//$bookList = array($_POST'['callNumber'],$_POST'['callNumber'],$_POST'['callNumber'],$_POST'['callNumber']);
-$bookList = array("1111","1121","1123","1113","");
+$bid = $_POST'['bid'];
+
+$bookList = array($_POST'['callNumber1'],$_POST'['callNumber2'],$_POST'['callNumber3'],$_POST'['callNumber4'],$_POST'['callNumber5']);
+
 $numOfBooks = count($bookList);
 $stack=array();
 $today = date('m-d-Y');
