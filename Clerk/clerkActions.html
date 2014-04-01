@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>CPSC304 - Clerk Actions</title>
+</head>
+
+<body>
+Add a Borrower
+<br>
+<form target="iframe_php" action="Clerk/ClerkAddBorrower.php" method="post">
+Enter Name: <input type="text" name="name">
+Enter Password: <input type="text" name="password">
+Enter Address: <input type="text" name="address">
+Enter Phone: <input type="text" name="phone">
+Enter Email Address: <input type="text" name="emailAddress">
+Enter SIN or Student#: <input type="text" name="sinOrStNo">
+Enter Expiry Date: <input type="text" name="expiryDate">
+Enter Type: <input type="text" name="type">
+<input type="submit">
+</form>
+<br>
+<br>
+    
+
+    
+    
+    
+
+Check Out Books
+<br>
+<form target="iframe_php" action="Clerk/ClerkCheckout.php" method="post">
+Enter Borrower ID: <input type="text" name="bid">
+<input type="submit">
+</form>
+<br>
+<br>
+
+Check Overdue Books
+<br>
+<form target="iframe_php" action="Clerk/ClerkOverdue.php" method="post">
+Enter Call Number: <input type="text" name="callNumber">
+Enter Borrower ID: <input type="text" name="bid">
+<input type="submit">
+</form>
+<br>
+<br>
+
+Process a Return
+<br>
+<form target="iframe_php" action="Clerk/ClerkReturn.php" method="post">
+Enter Fine ID: <input type="text" name="fid">
+<input type="submit">
+</form>
+<br>
+<br>
+</body>
+</html>

@@ -1,7 +1,7 @@
-<br />
-<br />
-
 <?php
+
+
+
 $con=mysqli_connect("localhost","root","");
 // Check connection
 if (mysqli_connect_errno()){
@@ -221,13 +221,6 @@ if (mysqli_query($con,$sql)){
 }
 else{
   echo "<br />Error creating table: " . mysqli_error($con);
-} 
-
+}  
 
 ?>
-
-<br />
-<br />
-<br />
-<br />
-Please click your browser's "Back" button to proceed
