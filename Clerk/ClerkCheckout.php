@@ -71,47 +71,30 @@ if(mysqli_num_rows($result)>0) {
                 } else echo "$book is not available<br>";
             }
         }
-        
-        echo"<table border ='1'><tr><th>
-        Books Borrowed This Transaction
-        </th></tr></table>";
-        
-        echo"<table border='1'><tr>
-        <th>Catalogue No</th>
-        <th>Due</th>
-        </tr>";
+        echo "======Books Borrowed This Transaction======<br>";
         // Method 1 Selects all items from this submission
         for($x=0;$x<count($stack);$x++){
-          echo"<tr>";
-          echo"<td>".$stack[$x][0]."-".$stack[$x][1]."</td>";
-          echo"<td>".$stack[$x][2]."</td>";
-          echo"</tr>";
+          echo "Book ".$stack[$x][0].
+            " Copy ".$stack[$x][1].
+            " Due ".$stack[$x][2];
+            echo "<br>";
         }
-        echo"</table>";
         // Method 2 Selects all items related to that bid
         $results = mysqli_query($con,"SELECT *
                                   FROM Borrowing
                                   WHERE bid = $bid
                                     AND inDate = '0000-00-00'
                                   ORDER BY outDate");
-        
-        echo"<table border ='1'><tr><th>
-          All Books Borrowed, Not Yet Returned
-          </th></tr></table>";
-        echo"<table border='1'><tr>
-          <th>Catalogue No</th>
-          <th>Due</th>
-          </tr>";
+        echo "====All Books Borrowed, Not Yet Returned====<br>";
         while($row = mysqli_fetch_array($results))
           {
             $outDate=$row['outDate'];
             $dueDate = date("m-d-Y",strtotime("$outDate + $days day"));
-            echo"<tr>";
-            echo"<td>".$row['callNumber']."-".$row['copyNo']."</td>";
-            echo"<td>".$dueDate."</td>";
-            echo"</tr>";
+            echo "Book ".$row['callNumber'].
+            " Copy ".$row['copyNo'].
+            " Due ".$dueDate;
+            echo "<br>";
           }
-        echo"</table>";
     }
 } else {
     echo "User not found";

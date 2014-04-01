@@ -4,7 +4,7 @@
 	if (mysqli_connect_errno()){
 	  echo "<br />Failed to connect to MySQL: " . mysqli_connect_error();
 	} else {
-		$increment = 0;
+	
 		$x = $_POST['callNumber'];
 	
 	if($_POST['callNumber']!=''  AND $_POST['mainAuthor']!='' AND $_POST['subject']!='') {
@@ -36,25 +36,24 @@
 				}
 		 
 		
-			//add copy
-			$sql4="INSERT INTO BookCopy(callNumber, copyNo,status)
-			VALUES('$_POST[callNumber]', 0, 'IN')";
+			
 			//TEST
 			/*$sql2="INSERT INTO BookCopy(callNumber, status)
 			VALUES
 			(11111, 'in')";*/
 			
+				
+		} 
+			//add copy
+			$sql4="INSERT INTO BookCopy(callNumber, copyNo, status)
+			VALUES('$_POST[callNumber]', 1, 'IN')";
 			if(!mysqli_query($con,$sql4)) {
 				die('Error: ' . mysqli_error($con));	
-			}	
-		} else {
-			$increment=mysqli_query($con, "UPDATE BookCopy
-							SET copyNo=copyNo+1
-							WHERE callNumber = '{$_POST['callNumber']}'");
-			if(!mysqli_query($con,$increment)) {
-				die('Error increment: ' . mysqli_error($con));	
 			}
-		}
+			$increment=mysqli_query($con, "UPDATE BookCopy
+							SET copyNo = copyNo + 1
+							WHERE callNumber = '{$_POST['callNumber']}'");	
+		
 		echo "Book added";
 	} else {
 		echo "Missing a field, please try again";
