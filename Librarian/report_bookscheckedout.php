@@ -25,7 +25,7 @@
 						INNER JOIN Borrowing
 						 ON BookCopy.callNumber=Borrowing.callNumber
 						WHERE BookCopy.status='out'
-						ORDERED BY BookCopy.callNumber");
+						ORDER BY BookCopy.callNumber");
 		//}
 		
 		if (!$result)
@@ -38,11 +38,6 @@
 			echo "<table border='1'>
 			<tr>
 			<th>Call Number</th> 
-			<th>ISBN</th>
-			<th>Title</th>
-			<th>Author</th>
-			<th>Publisher</th>
-			<th>Year</th>
 			<th>Check out date</th>
 			<th>Due date</th>
 			</tr>";
@@ -50,11 +45,6 @@
 			while($row = mysqli_fetch_array($result)) {
 				echo "<tr>";
 				echo "<td>" . $row['callNumber'] . "</td>";
-				echo "<td>" . $row['isbn'] . "</td>";
-				echo "<td>" . $row['title'] . "</td>";
-				echo "<td>" . $row['mainAuthor'] . "</td>";
-				echo "<td>" . $row['publisher'] . "</td>";
-				echo "<td>" . $row['year'] . "</td>";
 				echo "<td>" . $row['outDate'] . "</td>";
 				echo "<td>" . $row['inDate'] . "</td>";
 				echo "</tr>";
