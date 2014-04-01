@@ -37,7 +37,7 @@
 			$x = 0;
 			while($x <= $n) {
 				while($row = mysqli_fetch_array($result)) {
-					$ref_year = date("Y",strtotime("$row[outDate]"));
+					$ref_year = date("Y",strtotime("$row['outDate']"));
 					if($year = $ref_year) {
 						echo "<tr>";
 						echo "<td>" . $row['callNumber'] . "</td>";

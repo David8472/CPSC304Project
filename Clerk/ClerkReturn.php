@@ -5,10 +5,8 @@ $con=mysqli_connect("localhost","root","", "DBCPSC304");
 if (mysqli_connect_errno()){
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
-
 $callNumber = $_POST['callNumber'];
 $copyNo = $_POST['copyNo'];
-
 
 $today = date('Y-m-d');
 
@@ -44,7 +42,7 @@ if(mysqli_num_rows($results) > 0){
     $days = intval($row['bookTimeLimit']);
     $outDate = $row['outDate'];
     $dueDate = date("Y-m-d",strtotime("$outDate + $days day"));
-    //echo "$outDate and $dueDate and $today";
+    echo "$outDate and $dueDate and $today";
     if($dueDate < $today) {
       echo "This book (".$row['callNumber'].
           "-".$row['copyNo'].
@@ -77,14 +75,13 @@ if(mysqli_num_rows($results) > 0){
                       WHERE bid = $bid");
     $row = $requester->fetch_assoc();
     $name = $row['name'];
-    $email = $row['emailAddress'];
     // Fetch book name
     $requestedBook=mysqli_query($con,"SELECT *
                       FROM Book
                       WHERE callNumber = $callNumber");
     $row = $requestedBook->fetch_assoc();
     $bookname=$row['title'];
-    echo "A email has been sent to $name at $email to notify them that 
+    echo "A message has been sent to $name (bid:$bid) to notify them that 
     the book <i>$bookname</i> ($callNumber) is available.<br>";
     $updateBC=mysqli_query($con,"UPDATE BookCopy
                     SET status = 'on-Hold'
