@@ -103,7 +103,7 @@ $sql = "CREATE TABLE HasAuthor
 (
 callNumber CHAR(50) NOT NULL,
 FOREIGN KEY (callNumber) REFERENCES Book(callNumber),
-name CHAR(50) NOT NULL UNIQUE,
+name CHAR(50) NOT NULL,
 PRIMARY KEY(name)
 )"; 
   
@@ -142,7 +142,7 @@ else{
 $sql = "CREATE TABLE BookCopy
 (
 callNumber CHAR(50) NOT NULL , 
-copyNo INT NOT NULL UNIQUE,
+copyNo INT NOT NULL,
 PRIMARY KEY(copyNo),
 FOREIGN KEY (callNumber) REFERENCES Book(callNumber),
 status CHAR(7)
