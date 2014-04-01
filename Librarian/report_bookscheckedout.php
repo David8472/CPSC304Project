@@ -21,8 +21,10 @@
 		if(!empty($subject)) {
 			$result=mysqli_query($con, "SELECT *
 						FROM BookCopy
+						INNER JOIN HasSubject
+						 ON BookCopy.callNumber=HasSubject.callNumber
 						INNER JOIN Borrowing Borrowing
-						 ON BookCopy.callNumber=Borrowing.callNumber
+						 ON HasSubject.callNumber=Borrowing.callNumber
 						INNER JOIN Borrower
 						 ON Borrowing.bid = Borrower.bid
 						INNER JOIN BorrowerType
@@ -30,7 +32,6 @@
 						WHERE BookCopy.status='OUT'
 						 AND BookCopy.copyNo = Borrowing.copyNo AND HasSubject.subject='$subject'
 						ORDER BY BookCopy.callNumber");
-		}
 		//echo "Subject: " . $_POST['searchsubject' . "\n"];
 		echo "Subject: " . $subject . "<br>";
 		} else {
