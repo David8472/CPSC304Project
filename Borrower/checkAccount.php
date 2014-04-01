@@ -18,7 +18,7 @@ $db_con=mysqli_connect("localhost","root","", "DBCPSC304");
 		$borrowing = "SELECT *
 					FROM Borrowing
 					INNER JOIN Book on Borrowing.callNumber = Book.callNumber
-					WHERE bid = '{$_POST['bid']}' AND inDate IS NULL";
+					WHERE bid = '{$_POST['bid']}' AND inDate = '0000-00-00'";
 		$result2 = mysqli_query($db_con,$borrowing);
 			while($row = mysqli_fetch_array($result2))
 			{
@@ -31,7 +31,7 @@ $db_con=mysqli_connect("localhost","root","", "DBCPSC304");
 				FROM Fine
 				INNER JOIN Borrowing ON Borrowing.bid = '{$_POST['bid']}'
 				INNER JOIN Book on Borrowing.callNumber = Book.callNumber
-				WHERE paidDate IS NULL";
+				WHERE paidDate = '0000-00-00'";
 		$result3 = mysqli_query($db_con,$fines);
 		while($row = mysqli_fetch_array($result3))
 			{
