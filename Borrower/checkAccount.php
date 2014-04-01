@@ -35,7 +35,7 @@ $db_con=mysqli_connect("localhost","root","", "DBCPSC304");
 		$result3 = mysqli_query($db_con,$fines);
 		while($row = mysqli_fetch_array($result3))
 			{
-				echo "You must pay a fine of $" . $row['amount'] . " on the book '" . $row['title'] . "'<br>";
+				echo "You must pay fine #" . $row['fid'] . " to the amount of $" . $row['amount'] . " on the book " . $row['title'] . "<br>";
 			}
 		echo "<br>";
 	}
