@@ -5,18 +5,16 @@
 	  echo "<br />Failed to connect to MySQL: " . mysqli_connect_error();
 	} else {
 
-		//$n = $_POST['number'];
-		//$year = $_POST['year'];
-		$n = 5;
-		$year = 1993;
+		$n = $_POST['number'];
+		$year = $_POST['year'];
+		
 		echo $n . " most popular books in " . $year . "\n";
 		
 		//most popular books
-		$result=mysqli_query($con,"SELECT DISTINCT *
-				     FROM Borrowing
-				     INNER JOIN Book
-				     ON Borrowing.callNumber=Book.callNumber
-				     WHERE substr(Borrowing.outDate, 0, 4)=$year
+		$result=mysqli_query($con,"SELECT DISTINCT Book.callNumber, Book.isbn, Book.title, Book.mainAuthor, Book.publisher, Book.year, Borrowing.outDate
+				     FROM Book
+				     INNER JOIN Borrowing
+				      ON Book.callNumber=Borrowing.callNumber
 				     ORDER BY Borrowing.borid");
 		
 		if (!$result)
@@ -39,14 +37,17 @@
 			$x = 0;
 			while($x <= $n) {
 				while($row = mysqli_fetch_array($result)) {
-					echo "<tr>";
-					echo "<td>" . $row['callNumber'] . "</td>";
-					echo "<td>" . $row['isbn'] . "</td>";
-					echo "<td>" . $row['title'] . "</td>";
-					echo "<td>" . $row['mainAuthor'] . "</td>";
-					echo "<td>" . $row['publisher'] . "</td>";
-					echo "<td>" . $row['year'] . "</td>";
-					echo "</tr>";
+					$ref_year = date("Y",strtotime("$row[outDate]"));
+					if($year = $ref_year) {
+						echo "<tr>";
+						echo "<td>" . $row['callNumber'] . "</td>";
+						echo "<td>" . $row['isbn'] . "</td>";
+						echo "<td>" . $row['title'] . "</td>";
+						echo "<td>" . $row['mainAuthor'] . "</td>";
+						echo "<td>" . $row['publisher'] . "</td>";
+						echo "<td>" . $row['year'] . "</td>";
+						echo "</tr>";
+					}
 				}
 			$x++;
 			}
