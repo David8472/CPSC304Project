@@ -37,7 +37,12 @@
 		
 		//add copy
 		$sql4="INSERT INTO BookCopy(callNumber, status)
+<<<<<<< HEAD
+		VALUES
+		('$_POST[callNumber]', 'in')";
+=======
 		VALUES('$_POST['callNumber']','$_POST['status']')";
+>>>>>>> a76ccd13318bbb26b14e9df85568af0b909a4c1b
 		//TEST
 		/*$sql2="INSERT INTO BookCopy(callNumber, status)
 		VALUES
