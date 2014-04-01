@@ -34,6 +34,10 @@
 						FROM BookCopy
 						INNER JOIN Borrowing
 						 ON BookCopy.callNumber=Borrowing.callNumber
+						INNER JOIN Borrower
+						ON Borrowing.bid = Borrower.bid
+						INNER JOIN BorrowerType
+						ON Borrower.type = BorrowerType.type
 						WHERE BookCopy.status='out'
 						ORDER BY BookCopy.callNumber");
 		}

@@ -41,7 +41,7 @@
 		//add copy
 		$sql4="INSERT INTO BookCopy(callNumber, status)
 		VALUES
-		('$_POST[callNumber]', '$_POST[status]')";
+		('$_POST[callNumber]', 'in')";
 		//TEST
 		/*$sql2="INSERT INTO BookCopy(callNumber, status)
 		VALUES
