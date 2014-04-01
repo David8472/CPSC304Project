@@ -21,47 +21,46 @@
 		//echo "Subject: " . $_POST['searchsubject' . "\n"];
 		//} else {
 			$result=mysqli_query($con, "SELECT *
-						FROM Book,
+						FROM BookCopy
 						INNER JOIN Borrowing
-						 ON Book.callNumber=Borrowing.callNumber
-						INNER JOIN BookCopy
-						 ON Borrowing.callNumber=BookCopy.callNumber
+						 ON BookCopy.callNumber=Borrowing.callNumber
 						WHERE BookCopy.status='out'
 						ORDERED BY BookCopy.callNumber");
 		//}
 		
-		// Check for errors
-		if (!$results)
+		if (!$result)
 		  {
 		    die('Error: ' . mysqli_error($con));
 		  }
-	
-		// table header
-		echo "<table border='1'>
-		<tr>
-		<th>Call Number</th> 
-		<th>ISBN</th>
-		<th>Title</th>
-		<th>Author</th>
-		<th>Publisher</th>
-		<th>Year</th>
-		<th>Check out date</th>
-		<th>Due date</th>
-		</tr>";
-		//table items
-		while($row = mysqli_fetch_array($result)) {
-			echo "<tr>";
-			echo "<td>" . $row['callNumber'] . "</td>";
-			echo "<td>" . $row['isbn'] . "</td>";
-			echo "<td>" . $row['title'] . "</td>";
-			echo "<td>" . $row['mainAuthor'] . "</td>";
-			echo "<td>" . $row['publisher'] . "</td>";
-			echo "<td>" . $row['year'] . "</td>";
-			echo "<td>" . $row['outDate'] . "</td>";
-			echo "<td>" . $row['inDate'] . "</td>";
-			echo "</tr>";
+		
+		if(mysqli_num_rows($result) > 0) {
+			// table header
+			echo "<table border='1'>
+			<tr>
+			<th>Call Number</th> 
+			<th>ISBN</th>
+			<th>Title</th>
+			<th>Author</th>
+			<th>Publisher</th>
+			<th>Year</th>
+			<th>Check out date</th>
+			<th>Due date</th>
+			</tr>";
+			//table items
+			while($row = mysqli_fetch_array($result)) {
+				echo "<tr>";
+				echo "<td>" . $row['callNumber'] . "</td>";
+				echo "<td>" . $row['isbn'] . "</td>";
+				echo "<td>" . $row['title'] . "</td>";
+				echo "<td>" . $row['mainAuthor'] . "</td>";
+				echo "<td>" . $row['publisher'] . "</td>";
+				echo "<td>" . $row['year'] . "</td>";
+				echo "<td>" . $row['outDate'] . "</td>";
+				echo "<td>" . $row['inDate'] . "</td>";
+				echo "</tr>";
+			}
+			echo "</table>";
 		}
-		echo "</table>";
 	}
 	
 	mysqli_close($con);

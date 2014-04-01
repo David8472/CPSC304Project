@@ -23,10 +23,23 @@
 			if(!mysqli_query($con,$sql1)) {
 				die('Error: ' . mysqli_error($con));	
 			}
+			$sql2="INSERT INTO HasAuthor(callNumber, name)
+			VALUES
+			('$_POST[callNumber]', '$_POST[name]')";
+			if(!mysqli_query($con,$sql2)) {
+				die('Error: ' . mysqli_error($con));	
+			}
+			
+			$sql3="INSERT INTO HasSubject(callNumber, subject)
+			VALUES
+			('$_POST[callNumber]', '$_POST[status]')";
+			if(!mysqli_query($con,$sql3)) {
+				die('Error: ' . mysqli_error($con));	
+			}
 		}
 		
 		//add copy
-		$sql2="INSERT INTO BookCopy(callNumber, status)
+		$sql4="INSERT INTO BookCopy(callNumber, status)
 		VALUES
 		('$_POST[callNumber]', '$_POST[status]')";
 		//TEST
@@ -34,7 +47,7 @@
 		VALUES
 		(11111, 'in')";*/
 		
-		if(!mysqli_query($con,$sql2)) {
+		if(!mysqli_query($con,$sql4)) {
 			die('Error: ' . mysqli_error($con));	
 		}
 	
