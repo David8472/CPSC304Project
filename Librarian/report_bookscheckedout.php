@@ -29,6 +29,12 @@
 					ORDERED BY BookCopy.callNumber";
 			$result=mysqli_query($con, $nosubject);
 		//}
+		
+		// Check for errors
+		if (!$results)
+		  {
+		    die('Error: ' . mysqli_error($con));
+		  }
 	
 		// table header
 		echo "<table border='1'>
@@ -43,7 +49,6 @@
 		<th>Due date</th>
 		</tr>";
 		//table items
-		if($result){
 		while($row = mysqli_fetch_array($result)) {
 			echo "<tr>";
 			echo "<td>" . $row['callNumber'] . "</td>";
@@ -55,7 +60,7 @@
 			echo "<td>" . $row['outDate'] . "</td>";
 			echo "<td>" . $row['inDate'] . "</td>";
 			echo "</tr>";
-		}}
+		}
 		echo "</table>";
 	}
 	
