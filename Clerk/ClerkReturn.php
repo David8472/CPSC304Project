@@ -49,7 +49,7 @@ if(mysqli_num_rows($results) > 0){
       $bid=$row['bid'];
       $borid=$row['borid'];
       $addFine=mysqli_query($con," INSERT INTO Fine (borid,amount,issuedDate,paidDate)
-                            VALUES ('$borid','$10','$today','')");
+                            VALUES ('$borid','10','$today','')");
       if ($addFine){
         echo "Add fine to bid:$bid for book $callNumber-$copyNo.<br>";
       } else {

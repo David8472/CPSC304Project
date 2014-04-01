@@ -31,7 +31,7 @@ $db_con=mysqli_connect("localhost","root","", "DBCPSC304");
 				FROM Fine
 				INNER JOIN Borrowing ON Borrowing.bid = '{$_POST['bid']}'
 				INNER JOIN Book on Borrowing.callNumber = Book.callNumber
-				WHERE paidDate = '0000-00-00'";
+				WHERE paidDate = '0000-00-00' AND Fine.borid = Borrowing.borid";
 		$result3 = mysqli_query($db_con,$fines);
 		while($row = mysqli_fetch_array($result3))
 			{
