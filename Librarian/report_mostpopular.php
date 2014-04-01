@@ -35,22 +35,21 @@
 			</tr>";
 			//table items
 			$x = 0;
-			while($x <= $n) {
-				while($row = mysqli_fetch_array($result)){
-					$ref_year=date("Y",strtotime("$row[outDate]"));
-					if($year == $ref_year){
-						echo "<tr>";
-						echo "<td>" . $row['callNumber'] . "</td>";
-						echo "<td>" . $row['isbn'] . "</td>";
-						echo "<td>" . $row['title'] . "</td>";
-						echo "<td>" . $row['mainAuthor'] . "</td>";
-						echo "<td>" . $row['publisher'] . "</td>";
-						echo "<td>" . $row['year'] . "</td>";
-						echo "</tr>";
-					}
+			while($row = mysqli_fetch_array($result) AND $x < $n){
+				$ref_year=date("Y",strtotime("$row[outDate]"));
+				if($year == $ref_year){
+					echo "<tr>";
+					echo "<td>" . $row['callNumber'] . "</td>";
+					echo "<td>" . $row['isbn'] . "</td>";
+					echo "<td>" . $row['title'] . "</td>";
+					echo "<td>" . $row['mainAuthor'] . "</td>";
+					echo "<td>" . $row['publisher'] . "</td>";
+					echo "<td>" . $row['year'] . "</td>";
+					echo "</tr>";
 				}
-			$x++;
+				$x++;
 			}
+		
 			echo "</table>";
 		}
 	}
