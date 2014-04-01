@@ -15,11 +15,11 @@ $results=mysqli_query($con,"SELECT *
                       FROM BookCopy
                       WHERE BookCopy.callNumber = $callNumber
                         AND BookCopy.copyNo = $copyNo
-                        AND BookCopy.status = 'out'");
+                        AND BookCopy.status = 'OUT'");
 if(mysqli_num_rows($results) > 0){
   // Book has been taken out so update information
   $updateBC=mysqli_query($con,"UPDATE BookCopy
-                    SET status = 'in'
+                    SET status = 'IN'
                     WHERE callNumber = $callNumber
                      AND copyNo = $copyNo");
   $updateBrrwing=mysqli_query($con,"UPDATE Borrowing
@@ -84,7 +84,7 @@ if(mysqli_num_rows($results) > 0){
     echo "A message has been sent to $name (bid:$bid) to notify them that 
     the book <i>$bookname</i> ($callNumber) is available.<br>";
     $updateBC=mysqli_query($con,"UPDATE BookCopy
-                    SET status = 'on-Hold'
+                    SET status = 'ON-HOLD'
                     WHERE callNumber = $callNumber
                      AND copyNo = $copyNo");
   }
