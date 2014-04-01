@@ -86,26 +86,26 @@ mysqli_query($con,"INSERT INTO HasSubject(callNumber,subject)
              VALUES ('1121','PET DOGS')");
 
 // Book Copies
-mysqli_query($con,"INSERT INTO BookCopy (callNumber, status)
-             VALUES ('1123','IN')");
-mysqli_query($con,"INSERT INTO BookCopy (callNumber, status)
-             VALUES ('1121','IN')");
-mysqli_query($con,"INSERT INTO BookCopy (callNumber, status)
-             VALUES ('1111','IN')");
-mysqli_query($con,"INSERT INTO BookCopy (callNumber, status)
-             VALUES ('1111','OUT')");
-mysqli_query($con,"INSERT INTO BookCopy (callNumber, status)
-             VALUES ('1111','IN')");
-mysqli_query($con,"INSERT INTO BookCopy (callNumber, status)
-             VALUES ('1112','IN')");
-mysqli_query($con,"INSERT INTO BookCopy (callNumber, status)
-             VALUES ('1112','IN')");
-mysqli_query($con,"INSERT INTO BookCopy (callNumber, status)
-             VALUES ('1112','OUT')");
-mysqli_query($con,"INSERT INTO BookCopy (callNumber, status)
-             VALUES ('1112','IN')");
-mysqli_query($con,"INSERT INTO BookCopy (callNumber, status)
-             VALUES ('1112','IN')");
+mysqli_query($con,"INSERT INTO BookCopy (copyNo, callNumber, status)
+             VALUES ('1','1123','IN')");
+mysqli_query($con,"INSERT INTO BookCopy (copyNo, callNumber, status)
+             VALUES ('1','1121','IN')");
+mysqli_query($con,"INSERT INTO BookCopy (copyNo, callNumber, status)
+             VALUES ('1','1111','IN')");
+mysqli_query($con,"INSERT INTO BookCopy (copyNo, callNumber, status)
+             VALUES ('1','1111','OUT')");
+mysqli_query($con,"INSERT INTO BookCopy (copyNo, callNumber, status)
+             VALUES ('3','1111','IN')");
+mysqli_query($con,"INSERT INTO BookCopy (copyNo, callNumber, status)
+             VALUES ('1','1112','IN')");
+mysqli_query($con,"INSERT INTO BookCopy (copyNo, callNumber, status)
+             VALUES ('2','1112','IN')");
+mysqli_query($con,"INSERT INTO BookCopy (copyNo, callNumber, status)
+             VALUES ('3','1112','OUT')");
+mysqli_query($con,"INSERT INTO BookCopy (copyNo, callNumber, status)
+             VALUES ('4','1112','IN')");
+mysqli_query($con,"INSERT INTO BookCopy (copyNo, callNumber, status)
+             VALUES ('5','1112','IN')");
 
 // HoldRequests
 mysqli_query($con,"INSERT INTO HoldRequest (bid,callNumber,issuedDate)
@@ -115,9 +115,9 @@ mysqli_query($con,"INSERT INTO HoldRequest (bid,callNumber,issuedDate)
 
 // Borrowing             
 mysqli_query($con,"INSERT INTO Borrowing (bid,callNumber,copyNo,outDate,inDate)
-             VALUES('1','1111','4','2013-03-02','0-0-0')");
+             VALUES('1','1111','1','2013-03-02','0-0-0')");
 mysqli_query($con,"INSERT INTO Borrowing (bid,callNumber,copyNo,outDate,inDate)
-             VALUES('1','1112','8','2013-02-02','0-0-0')");
+             VALUES('1','1112','1','2013-02-02','0-0-0')");
 
 
 mysqli_close($con);
